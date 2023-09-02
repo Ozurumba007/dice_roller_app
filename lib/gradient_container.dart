@@ -16,13 +16,7 @@ class GradientContainer extends StatelessWidget {
         ),
       ),
       child: const Center(
-        child: Text(
-          'Hello Worrld',
-          style: TextStyle(
-            fontSize: 28,
-            color: Colors.white,
-          ),
-        ),
+        child: 
       ),
     );
   }
