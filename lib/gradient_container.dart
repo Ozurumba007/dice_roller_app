@@ -1,31 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:picture_changer/styled_text.dart';
 
 var startAlignment = Alignment.topLeft;
 var endAlignment = Alignment.bottomRight;
 
+// ignore: must_be_immutable
 class GradientContainer extends StatelessWidget {
-  const GradientContainer({
+  GradientContainer({
     super.key,
     required this.colors,
   });
   final List<Color> colors;
+
+  var activeDiceImage = 'assets/images/dice-2.png';
+
+  void rollDice() {
+    activeDiceImage = 'assets/images/dice-4.png';
+    print('Changing Image....');
+  }
 
   @override
   Widget build(context) {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [
-            Color.fromARGB(255, 26, 2, 80),
-            Color.fromARGB(255, 45, 7, 80),
-          ],
+          colors: colors,
           begin: startAlignment,
           end: endAlignment,
         ),
       ),
-      child: const Center(
-        child: StyleText('Hello World!!'),
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+              activeDiceImage,
+              width: 200,
+            ),
+            TextButton(
+              onPressed: rollDice,
+              style: TextButton.styleFrom(
+                  padding: EdgeInsets.only(top: 20),
+                  foregroundColor: Colors.white,
+                  textStyle: const TextStyle(fontSize: 28)),
+              child: const Text('Roll Dice'),
+            ),
+          ],
+        ),
       ),
     );
   }
